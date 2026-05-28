@@ -5,18 +5,12 @@
 
 ---
 
-## 🎥 Working Demo & Walkthrough
-![YourAlly Platform Workflow](public/yourally_demo.gif)
-*(To display your custom screen recording or website walkthrough, record a short clip of the website, convert it to a `yourally_demo.gif` or `yourally_demo.mp4`, place it in the `public/` directory, and it will render right here!)*
-
----
-
 ## 🚀 1. The Core Vision & Ecosystem Strategy
 YourAlly is a unified, hyperlocal on-demand service platform built for Tier 2/3 cities and smaller towns where premium services (like COOX or BookMyChef) do not operate. It addresses a major industry-wide hyperlocal pain point: **fragmented marketplaces and high customer acquisition costs (CAC).**
 
 ### 🔄 The CAC-to-LTV Flywheel
-*   **The Problem:** Standard service platforms focus only on low-frequency, high-margin transactions (like hiring a private chef or a wedding planner). Because transactions are rare, platforms must constantly buy new users using expensive paid ads (high CAC), while user Lifetime Value (LTV) is capped by rarity—leading to high churn and negative unit economics.
-*   **The YourAlly Solution:** We anchor the customer relationship using a **high-frequency daily active habit loop**—our free, interactive **Dynamic Recipes Guide**. Because cooking is a daily habit, users engage with the brand frequently for free. Once trust is established under the YourAlly brand, we cross-sell low-frequency, high-margin transactional services (Chefs, Event Discovery, Funeral Logistics) with **near-zero incremental acquisition costs**. 
+*   **The Problem:** Standard service platforms focus only on low-frequency, high-margin transactions (like hiring a private chef or a wedding planner). Because transactions are rare, platforms must constantly buy new users using expensive paid ads (high CAC), while user Lifetime Value (LTV) is capped by transaction rarity—leading to high churn and negative unit economics.
+*   **The YourAlly Solution:** We anchor the customer relationship using a **high-frequency daily active utility (DAU)**—our free, interactive **Dynamic Recipes Guide**. Because cooking is a daily habit, users engage with the brand frequently for free. Once trust is established under the YourAlly brand, we cross-sell rare, high-margin transactional services (Chefs, Event Discovery, Funeral Logistics) with **near-zero incremental acquisition costs**. 
 
 ---
 
@@ -34,7 +28,7 @@ Our strategic modeling maps out a highly profitable customer payback trajectory:
 
 ### 🏆 Launch Success Gates (3-Phase Roadmap)
 *   **Phase 0 (Core Foundation):** Pre-onboard 20+ verified physical chefs, 15+ event managers, secure 50+ monthly bookings, and achieve **90%+ funeral SLA callbacks within 30 minutes**.
-*   **Phase 1 (Value & Subscriptions):** Onboard 10+ virtual homemaker instructors, convert **25%+ of repeat users to weekly/monthly chef plans**, and achieve a 60%+ first-timer ₹50 welcome discount redemption.
+*   **Phase 1 (Value & Subscriptions):** Onboard 10+ virtual homemaker instructors, convert **25%+ of repeat users to weekly/monthly chef plans**, and achieve a 60%+ new sign-up redemption rate of the welcome ₹50 discount.
 *   **Phase 2 (Growth & Polish):** Convert the platform to an installable mobile PWA shell, integrate in-app event checkout, and expand regional multi-city infrastructure.
 
 ---
@@ -50,10 +44,10 @@ Bereavement represents an extreme, low-frequency, high-stress crisis state. Trea
 
 ## 🛠️ 4. Five Functional Product Pillars
 1.  **Personal Chef Hiring (Physical + Virtual):** Vetted home cooks for on-demand visits or weekly/monthly subscription plans, alongside remote video cooking consultations.
-2.  **Dynamic Recipe Scaler:** Volume-based portion counter dynamically re-calculates ingredient quantities in real time (from 1 to 50+ servings).
-3.  **Housewife Empowerment Supply Channel:** housewives register as Virtual Cooking Instructors with zero setup cost, guiding remote users live over video calls starting from **₹200/hr** to address domestic safety concerns and drive supply liquidity.
-4.  **Events Discovery Directory:** Discovery catalog with occasion filter tags for weddings, birthdays, pujas, and corporate events to validate regional demand before building complex checkouts.
-5.  **Gamified Loyalty Simulator:** Two-layer retention model featuring a ₹50 flat welcome discount to secure second-booking conversion and a gamified range-slider loyalty credit progression (Bronze, Silver, Gold multipliers) leveraging loss aversion to drive retention.
+2.  **Event Management Discovery Directory:** Discovery catalog with occasion filter tags for weddings, birthdays, pujas, and corporate events to validate regional demand before building complex checkouts.
+3.  **Funeral Management System (In-House Managed):** Compassionate, end-to-end funeral management service operated exclusively by a dedicated in-house team with grief sensitivity and a strict 30-minute callback commitment.
+4.  **Dynamic Recipe Guide (Portion Scaler):** Volume-based portion counter dynamically re-calculates ingredient quantities in real time (from 1 to 50+ servings).
+5.  **Women Empowerment (Virtual Cooking Instructors):** Homemakers and women register as Virtual Cooking Instructors with zero setup cost, guiding remote users live over video calls starting from **₹200/hr** to address domestic safety concerns and drive supply liquidity.
 
 ---
 
@@ -72,5 +66,5 @@ Vercel's edge servers have Bot Protection firewalls that block automated scraper
 
 ---
 
-## 🔒 Intellectual Property & Placements Notice
+## 🔒 Intellectual Property Notice
 This entire high-fidelity conceptual prototype, feature scoping, and operational architecture are designed, developed, and owned by **Prabhat Paul**. Unauthorized cloning or replication of these unique product flows is prohibited. Built as a comprehensive product management thesis and high-fidelity prototype showcase.
