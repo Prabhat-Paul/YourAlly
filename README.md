@@ -1,5 +1,5 @@
 # <img src="src/assets/AllyLOGO.png" width="48" height="40" valign="middle" /> YourAlly — Hyperlocal Domestic Companion & PM Case Study
-> **Conceptualized, Designed, and Managed by:** Prabhat Paul  
+> **Conceptualized, Designed, and Managed by:** Prabhat Paul; Rohit Parai who sparked the vision in Me. 
 > **Live Site:** [your-ally.vercel.app](https://your-ally.vercel.app/)  
 > **Platform Vision:** *"Your trusted companion for food, celebrations, and life's hardest moments."*
 
