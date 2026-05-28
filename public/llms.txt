@@ -1,5 +1,5 @@
 # YourAlly — Hyperlocal Domestic Companion & PM Case Study
-> **APM Candidate & Lead PM:** Prabhat Paul  
+> **Lead PM & Product Designer:** Prabhat Paul  
 > **Platform Vision:** "Your trusted companion for food, celebrations, and life's hardest moments."  
 > **Case Study Intent:** High-fidelity conceptual showcase demonstrating hyperlocal product strategy, unit economics, two-sided marketplace scoping, gamified retention loops, and crisis UX psychology.
 
@@ -75,4 +75,4 @@ YourAlly is designed for local communities in Tier 2/3 cities and smaller towns 
 ---
 
 ## 🔒 5. Intellectual Property & Placements Notice
-This entire high-fidelity conceptual prototype, feature scoping, and operational architecture are designed, developed, and owned by **Prabhat Paul**. Unauthorized cloning or replication of these unique product flows is prohibited. Built as an APM case study showcase.
+This entire high-fidelity conceptual prototype, feature scoping, and operational architecture are designed, developed, and owned by **Prabhat Paul**. Unauthorized cloning or replication of these unique product flows is prohibited. Built as a comprehensive product management thesis and high-fidelity prototype showcase.
