@@ -717,8 +717,11 @@ export default function RecipesPage({ language }) {
         highlights={["Contextual Upselling", "Daily Active Utility (DAU)", "Friction Point Monetization", "In-Context Upgrades"]}
         themeColor={C.brand}
       />
-      <div style={{ display: "flex", gap: 32, alignItems: "flex-start" }}>
-        <aside style={{ width: 240, flexShrink: 0 }}>
+      <div
+        className="ya-page-grid"
+        style={{ alignItems: "flex-start" }}
+      >
+        <aside style={{ width: "100%" }}>
         <SectionHeading style={{ fontSize: 26 }}>
           {translate("RecipeLabel", language) || "Recipes"}
         </SectionHeading>

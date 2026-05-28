@@ -296,6 +296,8 @@ export function Nav({
   void setLanguage;
   const [scrolled, setScrolled] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 8);
@@ -303,16 +305,21 @@ export function Nav({
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 960);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className="ya-shell"
       style={{
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        margin: "0 auto",
         width: "100%",
         background: scrolled ? "rgba(250,250,248,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
@@ -326,11 +333,12 @@ export function Nav({
         style={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "0 24px",
+          padding: isMobile ? "0 14px" : "0 24px",
           display: "flex",
           alignItems: "center",
-          height: 76,
-          gap: 12,
+          height: isMobile ? 64 : 76,
+          justifyContent: "space-between",
+          gap: isMobile ? 8 : 12,
         }}
       >
         <button
@@ -342,7 +350,7 @@ export function Nav({
             cursor: "pointer",
             padding: "4px 0",
             flexShrink: 0,
-            marginRight: 16,
+            marginRight: isMobile ? 0 : 16,
           }}
         >
           <span
@@ -357,8 +365,8 @@ export function Nav({
                 src={AllyLogo}
                 alt="Ally logo"
                 style={{
-                  width: 52,
-                  height: 42,
+                  width: isMobile ? 42 : 52,
+                  height: isMobile ? 34 : 42,
                   objectFit: "contain",
                   display: "block",
                 }}
@@ -377,125 +385,280 @@ export function Nav({
               <span
                 style={{
                   fontFamily: "'Playfair Display', serif",
-                  fontSize: 21,
+                  fontSize: isMobile ? 18 : 21,
                   fontWeight: 700,
                   color: C.text,
                 }}
               >
                 Your<span style={{ color: C.brand }}>Ally</span>
               </span>
-              <span
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  color: C.textMuted,
-                  marginTop: 2,
-                  letterSpacing: "0.01em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Companion for Every Occasion
-              </span>
+              {!isMobile && (
+                <span
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: C.textMuted,
+                    marginTop: 2,
+                    letterSpacing: "0.01em",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Companion for Every Occasion
+                </span>
+              )}
             </span>
           </span>
         </button>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 6,
-            flex: 1,
-            minWidth: 0,
-            overflowX: "auto",
-            overflowY: "hidden",
-            WebkitOverflowScrolling: "touch",
-            padding: "4px 0",
-          }}
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = active === item.id;
-            const isHovered = hoveredItem === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setSection(item.id)}
-                onMouseEnter={() => setHoveredItem(item.id)}
-                onMouseLeave={() => setHoveredItem(null)}
+        {!isMobile ? (
+          <>
+            <div
+              style={{
+                display: "flex",
+                gap: 6,
+                flex: 1,
+                justifyContent: "center",
+                minWidth: 0,
+                padding: "4px 0",
+              }}
+            >
+              {NAV_ITEMS.map((item) => {
+                const isActive = active === item.id;
+                const isHovered = hoveredItem === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setSection(item.id)}
+                    onMouseEnter={() => setHoveredItem(item.id)}
+                    onMouseLeave={() => setHoveredItem(null)}
+                    style={{
+                      background: isActive
+                        ? `${C.brand}12`
+                        : isHovered
+                          ? "rgba(0,0,0,0.03)"
+                          : "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: isActive ? C.brand : isHovered ? C.text : C.textMuted,
+                      padding: "8px 16px",
+                      borderRadius: 20,
+                      transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                      whiteSpace: "nowrap",
+                      transform: isHovered ? "translateY(-1px)" : "none",
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                marginLeft: 14,
+                flexShrink: 0,
+              }}
+            >
+              {/* Premium styled select dropdown */}
+              <select
+                aria-label="Select language"
+                value={language}
+                onChange={() => {}}
+                disabled
                 style={{
-                  background: isActive
-                    ? `${C.brand}12`
-                    : isHovered
-                      ? "rgba(0,0,0,0.03)"
-                      : "transparent",
-                  border: "none",
-                  cursor: "pointer",
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 13.5,
+                  fontSize: 12.5,
                   fontWeight: 600,
-                  color: isActive ? C.brand : isHovered ? C.text : C.textMuted,
-                  padding: "8px 16px",
-                  borderRadius: 20,
-                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-                  whiteSpace: "nowrap",
-                  transform: isHovered ? "translateY(-1px)" : "none",
+                  color: C.textMuted,
+                  background: "rgba(255,255,255,0.8)",
+                  border: `1.5px solid ${C.border}`,
+                  borderRadius: 10,
+                  padding: "7px 12px",
+                  outline: "none",
+                  cursor: "not-allowed",
+                  maxWidth: 160,
+                  minWidth: 100,
+                  flexShrink: 0,
+                  opacity: 0.7,
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
                 }}
               >
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
+                {(languages || []).map((l) => (
+                  <option key={l.code} value={l.code}>
+                    🌐 {l.label}
+                  </option>
+                ))}
+              </select>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            marginLeft: 14,
-            flexShrink: 0,
-          }}
-        >
-          {/* Premium styled select dropdown */}
-          <select
-            aria-label="Select language"
-            value={language}
-            onChange={() => {}}
-            disabled
+              <Btn
+                variant="primary"
+                style={{ padding: "8px 20px", fontSize: 13.5, borderRadius: 20 }}
+                onClick={() => setSection?.("sign-in")}
+              >
+                Sign In
+              </Btn>
+            </div>
+          </>
+        ) : (
+          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open menu"
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: "8px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: C.text,
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Menu Sliding Drawer */}
+      {isMobile && mobileMenuOpen && (
+        <>
+          <div
+            onClick={() => setMobileMenuOpen(false)}
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 12.5,
-              fontWeight: 600,
-              color: C.textMuted,
-              background: "rgba(255,255,255,0.8)",
-              border: `1.5px solid ${C.border}`,
-              borderRadius: 10,
-              padding: "7px 12px",
-              outline: "none",
-              cursor: "not-allowed",
-              maxWidth: 160,
-              minWidth: 100,
-              flexShrink: 0,
-              opacity: 0.7,
-              boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+              position: "fixed",
+              inset: 0,
+              zIndex: 9998,
+              background: "rgba(0,0,0,0.4)",
+              backdropFilter: "blur(4px)",
+              animation: "fadeIn 0.2s ease",
+            }}
+          />
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: "min(280px, 80vw)",
+              zIndex: 9999,
+              background: "rgba(250,250,248,0.98)",
+              backdropFilter: "blur(20px)",
+              boxShadow: "-10px 0 40px rgba(0,0,0,0.12)",
+              padding: "76px 20px 40px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+              animation: "slideLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            {(languages || []).map((l) => (
-              <option key={l.code} value={l.code}>
-                🌐 {l.label}
-              </option>
-            ))}
-          </select>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 6,
+                position: "absolute",
+                top: 20,
+                right: 20,
+                color: C.text,
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
 
-          <Btn
-            variant="primary"
-            style={{ padding: "8px 20px", fontSize: 13.5, borderRadius: 20 }}
-            onClick={() => setSection?.("sign-in")}
-          >
-            Sign In
-          </Btn>
-        </div>
-      </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 12 }}>
+              {NAV_ITEMS.map((item) => {
+                const isActive = active === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setSection(item.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    style={{
+                      background: isActive ? `${C.brand}12` : "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 15.5,
+                      fontWeight: 700,
+                      color: isActive ? C.brand : C.text,
+                      padding: "12px 18px",
+                      borderRadius: 12,
+                      textAlign: "left",
+                      width: "100%",
+                      transition: "all 0.15s",
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 14 }}>
+              <div style={{ height: 1, background: C.border }} />
+
+              <select
+                aria-label="Select language"
+                value={language}
+                onChange={() => {}}
+                disabled
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: C.textMuted,
+                  background: "rgba(255,255,255,0.8)",
+                  border: `1.5px solid ${C.border}`,
+                  borderRadius: 10,
+                  padding: "10px 14px",
+                  outline: "none",
+                  cursor: "not-allowed",
+                  width: "100%",
+                  opacity: 0.7,
+                }}
+              >
+                {(languages || []).map((l) => (
+                  <option key={l.code} value={l.code}>
+                    🌐 {l.label}
+                  </option>
+                ))}
+              </select>
+
+              <Btn
+                variant="primary"
+                style={{ padding: "12px 20px", fontSize: 14, borderRadius: 12, width: "100%" }}
+                onClick={() => {
+                  setSection?.("sign-in");
+                  setMobileMenuOpen(false);
+                }}
+              >
+                Sign In
+              </Btn>
+            </div>
+          </div>
+        </>
+      )}
     </nav>
   );
 }

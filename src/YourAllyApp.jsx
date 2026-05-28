@@ -17,7 +17,23 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 
 export default function YourAllyApp() {
-  const [section, setSection] = useState("home");
+  const getSectionFromHash = () => {
+    if (typeof window === "undefined") return "home";
+    const hash = window.location.hash.replace("#", "");
+    const validSections = [
+      "home",
+      "chef",
+      "recipes",
+      "events",
+      "funeral",
+      "loyalty",
+      "sign-in",
+      "sign-up",
+    ];
+    return validSections.includes(hash) ? hash : "home";
+  };
+
+  const [section, setSection] = useState(getSectionFromHash);
 
   const LANGUAGES = [
     { code: "en-US", label: "English" },
@@ -30,6 +46,25 @@ export default function YourAllyApp() {
 
   // Language switching removed (was causing inconsistent font/TTS behavior).
   const language = "en-US";
+
+  // Synchronize browser history and hash pops (swipes, back clicks)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const next = getSectionFromHash();
+      setSection(next);
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const handleSetSection = (nextSection) => {
+    const currentHash = window.location.hash.replace("#", "");
+    if (currentHash !== nextSection) {
+      window.location.hash = nextSection;
+    } else {
+      setSection(nextSection);
+    }
+  };
 
   useEffect(() => {
     // Load Google Fonts
@@ -61,6 +96,10 @@ export default function YourAllyApp() {
         from { transform: translateY(100%); opacity: 0; }
         to   { transform: translateY(0);    opacity: 1; }
       }
+      @keyframes slideLeft {
+        from { transform: translateX(100%); }
+        to   { transform: translateX(0);    }
+      }
       @keyframes fadeIn {
         from { opacity: 0; transform: scale(0.96); }
         to   { opacity: 1; transform: scale(1);    }
@@ -78,15 +117,15 @@ export default function YourAllyApp() {
   }, [section]);
 
   const sectionMap = {
-    home: <HomePage setSection={setSection} />,
+    home: <HomePage setSection={handleSetSection} />,
     chef: <ChefPage />,
     recipes: <RecipesPage language={language} />,
 
     events: <EventsPage />,
     funeral: <FuneralPage />,
     loyalty: <LoyaltyPage />,
-    "sign-in": <SignInPage setSection={setSection} />,
-    "sign-up": <SignUpPage setSection={setSection} />,
+    "sign-in": <SignInPage setSection={handleSetSection} />,
+    "sign-up": <SignUpPage setSection={handleSetSection} />,
   };
 
   const themeClass = {
@@ -112,7 +151,7 @@ export default function YourAllyApp() {
       >
         <Nav
           active={section}
-          setSection={setSection}
+          setSection={handleSetSection}
           language={language}
           languages={LANGUAGES}
         />
