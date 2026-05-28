@@ -267,3 +267,33 @@ a {
     transform: translateY(0) scale(1);
   }
 }
+
+/* ---------- Responsive Auth Page Layouts ---------- */
+.ya-auth-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 20px;
+}
+
+.ya-auth-card {
+  background: var(--ya-surface);
+  border: 1.5px solid var(--ya-border);
+  border-radius: 18px;
+  padding: 26px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .ya-auth-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ya-auth-card {
+    padding: 20px 16px;
+  }
+}
+

@@ -6,7 +6,7 @@ import {
   translate,
   TRANSLATIONS,
 } from "./shared/constants";
-import { Badge, Btn, SectionHeading, ShowcaseBanner } from "./shared/components";
+import { Badge, Btn, SectionHeading, ShowcaseBanner, Icon } from "./shared/components";
 import { scaleIngredient, formatQty } from "./shared/utils";
 
 function VirtualChefModal({ recipe, servings, onClose, language }) {
@@ -416,11 +416,11 @@ function RecipeDetail({
             border: `1px solid ${C.brand}25`,
             display: "inline-flex",
             alignItems: "center",
-            gap: 4,
+            gap: 5,
             whiteSpace: "nowrap",
           }}
         >
-          💡 Interactive checklist (click to prep)
+          <Icon name="sparkles" size={11} color={C.brand} /> Interactive checklist (click to prep)
         </span>
       </div>
       <ul
@@ -467,12 +467,10 @@ function RecipeDetail({
                     alignItems: "center",
                     justifyContent: "center",
                     color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 800,
                     transition: "all 0.15s",
                   }}
                 >
-                  {isChecked ? "✓" : ""}
+                  {isChecked && <Icon name="check" size={11} color="#fff" />}
                 </span>
                 {ing.name}
               </span>
@@ -521,11 +519,11 @@ function RecipeDetail({
               border: `1px solid ${C.success}25`,
               display: "inline-flex",
               alignItems: "center",
-              gap: 4,
+              gap: 5,
               whiteSpace: "nowrap",
             }}
           >
-            📊 Track progress (click steps)
+            <Icon name="lightning" size={11} color={C.success} /> Track progress (click steps)
           </span>
         </div>
         <button
@@ -643,7 +641,7 @@ function RecipeDetail({
                     : "none",
                 }}
               >
-                {isDone ? "✓" : i + 1}
+                {isDone ? <Icon name="check" size={12} color="#fff" /> : i + 1}
               </span>
               <p
                 style={{

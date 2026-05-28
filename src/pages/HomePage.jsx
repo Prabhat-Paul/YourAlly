@@ -1,38 +1,37 @@
 import { useState } from "react";
 import { C, FEATURES, STATS } from "./shared/constants";
-import { Btn, SectionHeading } from "./shared/components";
+import { Btn, SectionHeading, Icon } from "./shared/components";
 
 function FeatureCard({ feature, setSection }) {
   const [hovered, setHovered] = useState(false);
 
   const getTheme = () => {
     switch (feature.icon) {
-      case "👨‍🍳":
+      case "chef":
         return {
           start: "#FFA742",
           end: "#E86F00",
           shadow: "rgba(232,111,0,0.22)",
         };
-      case "🐉":
-      case "🥖":
+      case "recipe":
         return {
           start: "#60A5FA",
           end: "#2563EB",
           shadow: "rgba(37,99,235,0.22)",
         };
-      case "🎉":
+      case "event":
         return {
           start: "#34D399",
           end: "#059669",
           shadow: "rgba(5,150,105,0.22)",
         };
-      case "🙏":
+      case "funeral":
         return {
           start: "#A8A29E",
           end: "#57534E",
           shadow: "rgba(87,83,78,0.22)",
         };
-      case "🧑":
+      case "women":
         return {
           start: "#C084FC",
           end: "#7C3AED",
@@ -76,7 +75,6 @@ function FeatureCard({ feature, setSection }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 26,
           color: "#fff",
           marginBottom: 20,
           boxShadow: `0 8px 20px ${theme.shadow}`,
@@ -84,7 +82,7 @@ function FeatureCard({ feature, setSection }) {
           transform: hovered ? "scale(1.1) rotate(6deg)" : "none",
         }}
       >
-        {feature.icon}
+        <Icon name={feature.icon} size={24} color="#fff" />
       </div>
       <h3
         style={{
@@ -186,7 +184,7 @@ export default function HomePage({ setSection }) {
                 boxShadow: "0 10px 25px rgba(232,135,26,0.25)",
               }}
             >
-              🥖 Explore Recipes (Live Demo)
+              <Icon name="recipe" size={20} color="#fff" style={{ marginRight: 8 }} /> Explore Recipes (Live Demo)
             </Btn>
             <Btn
               variant="secondary"

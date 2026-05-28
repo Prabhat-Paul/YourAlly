@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { C, EVENT_MANAGERS, OCCASIONS } from "./shared/constants";
-import { Badge, Btn, SectionHeading, Stars, ShowcaseBanner } from "./shared/components";
+import { Badge, Btn, SectionHeading, Stars, ShowcaseBanner, Icon } from "./shared/components";
 
 function EventCard({ manager }) {
   const [hovered, setHovered] = useState(false);
@@ -39,9 +39,12 @@ function EventCard({ manager }) {
           fontSize: 13,
           color: C.textMuted,
           marginBottom: 14,
+          display: "flex",
+          alignItems: "center",
+          gap: 4,
         }}
       >
-        📍 {manager.location}
+        <Icon name="location" size={13} color={C.textMuted} /> {manager.location}
       </p>
 
       <div
@@ -84,9 +87,12 @@ function EventCard({ manager }) {
             fontSize: 14,
             fontWeight: 600,
             color: C.success,
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
           }}
         >
-          📞 {manager.contact}
+          <Icon name="phone" size={13} color={C.success} /> {manager.contact}
         </div>
       ) : (
         <Btn

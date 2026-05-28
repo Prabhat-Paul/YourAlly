@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import AllyLogo from "../../assets/AllyLOGO.png";
 
 import { C, NAV_ITEMS } from "./constants";
+import { Icon } from "./icons";
+
+export { Icon };
 
 export function Toast({ message, type = "success", onClose }) {
   useEffect(() => {
@@ -34,9 +37,9 @@ export function Toast({ message, type = "success", onClose }) {
       }}
     >
       <span
-        style={{ color: accent, fontWeight: 700, fontSize: 16, marginTop: 1 }}
+        style={{ color: accent, display: "flex", marginTop: 2 }}
       >
-        ✓
+        <Icon name="check" size={15} color={accent} />
       </span>
       <p
         style={{
@@ -110,7 +113,9 @@ export function ShowcaseBanner({ title, description, highlights = [], themeColor
       </button>
 
       <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-        <span style={{ fontSize: 24, lineHeight: 1 }}>✨</span>
+        <span style={{ display: "flex", marginTop: 2 }}>
+          <Icon name="sparkles" size={20} color={themeColor} />
+        </span>
         <div style={{ flex: 1, paddingRight: 48 }}>
           <h4
             style={{
@@ -149,9 +154,12 @@ export function ShowcaseBanner({ title, description, highlights = [], themeColor
                     fontSize: 11,
                     fontWeight: 700,
                     fontFamily: "'DM Sans', sans-serif",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 4,
                   }}
                 >
-                  ⚡ {h}
+                  <Icon name="lightning" size={10} color={themeColor === "#6B6A68" || themeColor === "#4A4845" ? "#4A4845" : themeColor} /> {h}
                 </span>
               ))}
             </div>
@@ -492,7 +500,7 @@ export function Nav({
               >
                 {(languages || []).map((l) => (
                   <option key={l.code} value={l.code}>
-                    🌐 {l.label}
+                    {l.label}
                   </option>
                 ))}
               </select>
@@ -640,7 +648,7 @@ export function Nav({
               >
                 {(languages || []).map((l) => (
                   <option key={l.code} value={l.code}>
-                    🌐 {l.label}
+                    {l.label}
                   </option>
                 ))}
               </select>
@@ -720,9 +728,13 @@ export function Footer({ activeSection }) {
             lineHeight: 1.6,
             maxWidth: 600,
             margin: "0 auto 12px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 6,
           }}
         >
-          🔒 <strong>Proprietary Product Concept &amp; PM Portfolio Showcase</strong>
+          <Icon name="lock" size={13} color="rgba(255,255,255,0.65)" /> <strong>Proprietary Product Concept &amp; PM Showcase</strong>
           <br />
           This interactive prototype is conceptualized and designed by{" "}
           <a

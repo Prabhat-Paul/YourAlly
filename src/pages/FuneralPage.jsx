@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FC } from "./shared/constants";
 import { generateCaseId } from "./shared/utils";
-import { ShowcaseBanner } from "./shared/components";
+import { ShowcaseBanner, Icon } from "./shared/components";
 
 function FuneralStep1({ data, onChange, onNext }) {
   const canNext =
@@ -831,9 +831,13 @@ export default function FuneralPage() {
               fontWeight: 600,
               color: FC.text,
               marginTop: 4,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 6,
             }}
           >
-            📞 +91 1800-YOUR-ALLY (24/7)
+            <Icon name="phone" size={14} color={FC.text} /> +91 1800-YOUR-ALLY (24/7)
           </p>
         </div>
       </div>

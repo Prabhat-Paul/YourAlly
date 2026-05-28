@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { C, LOYALTY_TIERS } from "./shared/constants";
 import { getTier } from "./shared/utils";
-import { Badge, SectionHeading, ShowcaseBanner } from "./shared/components";
+import { Badge, SectionHeading, ShowcaseBanner, Icon } from "./shared/components";
 
 export default function LoyaltyPage() {
   const [bookings, setBookings] = useState(1);
@@ -223,7 +223,9 @@ export default function LoyaltyPage() {
                   : "none",
               }}
             >
-              <div style={{ fontSize: 36, marginBottom: 10 }}>{t.icon}</div>
+              <div style={{ marginBottom: 14, display: "flex", alignItems: "center", height: 38 }}>
+                <Icon name={t.icon} size={36} color={isActive ? t.color : "#9CA3AF"} />
+              </div>
               <h4
                 style={{
                   fontFamily: "'Playfair Display', serif",

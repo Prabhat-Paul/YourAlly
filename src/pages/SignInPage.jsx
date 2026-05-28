@@ -96,14 +96,8 @@ export default function SignInPage({ onSignIn, setSection }) {
 
   return (
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "42px 24px 70px" }}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.05fr 0.95fr",
-          gap: 20,
-        }}
-      >
-        <div className="ya-card" style={{ padding: 26, borderRadius: 18 }}>
+      <div className="ya-auth-grid">
+        <div className="ya-auth-card">
           <SectionHeading>Sign In</SectionHeading>
           <p
             style={{
@@ -212,8 +206,8 @@ export default function SignInPage({ onSignIn, setSection }) {
         </div>
 
         <div
-          className="ya-card"
-          style={{ padding: 26, borderRadius: 18, background: C.brandPale }}
+          className="ya-auth-card"
+          style={{ background: C.brandPale }}
         >
           <h3
             style={{
