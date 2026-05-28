@@ -728,13 +728,12 @@ export function Footer({ activeSection }) {
             lineHeight: 1.6,
             maxWidth: 600,
             margin: "0 auto 12px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 6,
+            textAlign: "center",
           }}
         >
-          <Icon name="lock" size={13} color="rgba(255,255,255,0.65)" /> <strong>Proprietary Product Concept &amp; PM Showcase</strong>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, justifyContent: "center", width: "100%", marginBottom: 4 }}>
+            <Icon name="lock" size={13} color="rgba(255,255,255,0.65)" /> <strong>Proprietary Product Concept &amp; PM Showcase</strong>
+          </span>
           <br />
           This interactive prototype is conceptualized and designed by{" "}
           <a
@@ -761,6 +760,34 @@ export function Footer({ activeSection }) {
           >
             Prabhat Paul
           </a>.
+          <br />
+          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", display: "inline-block", marginTop: 4 }}>
+            Special thanks to{" "}
+            <a
+              href="https://www.linkedin.com/in/rohit-parai-871a56269"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "rgba(255,255,255,0.85)",
+                textDecoration: "none",
+                borderBottom: "1px dashed rgba(255,255,255,0.4)",
+                paddingBottom: 1,
+                transition: "all 0.2s ease",
+                fontWeight: 600,
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = brandColor;
+                e.target.style.borderBottomColor = brandColor;
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "rgba(255,255,255,0.85)";
+                e.target.style.borderBottomColor = "rgba(255,255,255,0.4)";
+              }}
+            >
+              Rohit Parai
+            </a>{" "}
+            who sparked the vision in me for YourAlly.
+          </span>
         </p>
         <p
           style={{
