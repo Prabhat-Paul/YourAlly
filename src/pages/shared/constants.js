@@ -348,7 +348,6 @@ export const NAV_ITEMS = [
   { id: "events", label: "Events" },
   { id: "funeral", label: "Funeral Support" },
   { id: "loyalty", label: "Loyalty" },
-  { id: "case-study", label: "PM Case Study" },
 ];
 
 export const FEATURES = [

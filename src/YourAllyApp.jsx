@@ -15,7 +15,6 @@ import FuneralPage from "./pages/FuneralPage";
 import LoyaltyPage from "./pages/LoyaltyPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import CaseStudyPage from "./pages/CaseStudyPage";
 
 export default function YourAllyApp() {
   const getSectionFromHash = () => {
@@ -30,7 +29,6 @@ export default function YourAllyApp() {
       "loyalty",
       "sign-in",
       "sign-up",
-      "case-study",
     ];
     return validSections.includes(hash) ? hash : "home";
   };
@@ -127,7 +125,6 @@ export default function YourAllyApp() {
     loyalty: <LoyaltyPage />,
     "sign-in": <SignInPage setSection={handleSetSection} />,
     "sign-up": <SignUpPage setSection={handleSetSection} />,
-    "case-study": <CaseStudyPage />,
   };
 
   const themeClass = {
@@ -137,7 +134,6 @@ export default function YourAllyApp() {
     events: "ya-theme-events",
     funeral: "ya-theme-funeral",
     loyalty: "ya-theme-loyalty",
-    "case-study": "ya-theme-loyalty",
     "sign-in": "ya-theme-auth",
     "sign-up": "ya-theme-auth",
   }[section];
