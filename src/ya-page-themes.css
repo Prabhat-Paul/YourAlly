@@ -1,0 +1,148 @@
+:root {
+  --ya-page-accent: var(--ya-brand);
+  --ya-page-accent-soft: rgba(232, 135, 26, 0.18);
+  --ya-page-accent-2: rgba(37, 99, 235, 0.14);
+  --ya-page-accent-3: rgba(45, 138, 91, 0.12);
+  --ya-page-mode: light;
+}
+
+/* Base: keep global motif from ui-theme.css; these themes add extra color + subtle texture */
+.ya-page-bg {
+  position: relative;
+}
+
+.ya-page-bg::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  /* Layered gradients to feel like a background design */
+  background:
+    radial-gradient(
+      900px 360px at 12% -10%,
+      var(--ya-page-accent-soft),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 280px at 92% 8%,
+      var(--ya-page-accent-2),
+      transparent 55%
+    ),
+    radial-gradient(
+      760px 300px at 70% 95%,
+      var(--ya-page-accent-3),
+      transparent 55%
+    ),
+    /* subtle noise-ish texture using gradients */
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+
+  background-size:
+    auto,
+    auto,
+    auto,
+    60px 60px,
+    60px 60px;
+
+  mask-image: radial-gradient(
+    900px 520px at 50% 10%,
+    black 55%,
+    transparent 100%
+  );
+}
+
+/* Ensure content sits above theme */
+.ya-page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* --------- Themes per section --------- */
+.ya-theme-home {
+  --ya-page-accent: #e8871a;
+  --ya-page-accent-soft: rgba(232, 135, 26, 0.18);
+  --ya-page-accent-2: rgba(37, 99, 235, 0.14);
+  --ya-page-accent-3: rgba(45, 138, 91, 0.12);
+}
+
+.ya-theme-chef {
+  --ya-page-accent: #b8650e;
+  --ya-page-accent-soft: rgba(232, 135, 26, 0.14);
+  --ya-page-accent-2: rgba(124, 58, 237, 0.16);
+  --ya-page-accent-3: rgba(37, 99, 235, 0.12);
+}
+
+.ya-theme-recipes {
+  --ya-page-accent: #2563eb;
+  --ya-page-accent-soft: rgba(37, 99, 235, 0.16);
+  --ya-page-accent-2: rgba(232, 135, 26, 0.14);
+  --ya-page-accent-3: rgba(45, 138, 91, 0.1);
+}
+
+.ya-theme-events {
+  --ya-page-accent: #2d8a5b;
+  --ya-page-accent-soft: rgba(45, 138, 91, 0.14);
+  --ya-page-accent-2: rgba(232, 135, 26, 0.14);
+  --ya-page-accent-3: rgba(37, 99, 235, 0.12);
+}
+
+.ya-theme-loyalty {
+  --ya-page-accent: #6b6a68;
+  --ya-page-accent-soft: rgba(107, 106, 104, 0.14);
+  --ya-page-accent-2: rgba(232, 135, 26, 0.12);
+  --ya-page-accent-3: rgba(37, 99, 235, 0.1);
+}
+
+/* Auth pages should be calmer */
+.ya-theme-auth {
+  --ya-page-accent: #2563eb;
+  --ya-page-accent-soft: rgba(37, 99, 235, 0.12);
+  --ya-page-accent-2: rgba(232, 135, 26, 0.1);
+  --ya-page-accent-3: rgba(0, 0, 0, 0.05);
+}
+
+/* Funeral theme: solemn + textured + halo */
+.ya-theme-funeral {
+  --ya-page-accent: #6b6a68;
+  --ya-page-accent-soft: rgba(107, 106, 104, 0.18);
+  --ya-page-accent-2: rgba(74, 72, 69, 0.12);
+  --ya-page-accent-3: rgba(0, 0, 0, 0.06);
+}
+
+/* Extra funeral-specific ornament: mandala/halo curves */
+.ya-theme-funeral::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    /* center halo */
+    radial-gradient(
+      520px 220px at 50% 22%,
+      rgba(255, 255, 255, 0.55),
+      transparent 60%
+    ),
+    radial-gradient(
+      360px 180px at 50% 28%,
+      rgba(0, 0, 0, 0.05),
+      transparent 65%
+    ),
+    /* subtle concentric rings */
+    radial-gradient(
+        circle at 50% 20%,
+        rgba(0, 0, 0, 0.1) 0 1px,
+        transparent 2px 160px
+      ),
+    radial-gradient(
+      circle at 50% 22%,
+      rgba(0, 0, 0, 0.06) 0 1px,
+      transparent 2px 220px
+    );
+
+  opacity: 0.9;
+  filter: saturate(0.85) contrast(1.02);
+}
