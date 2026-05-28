@@ -786,7 +786,7 @@ export function Footer({ activeSection }) {
             >
               Rohit Parai
             </a>{" "}
-            who sparked the vision with me with the feature of the recipe menu.
+            who sparked the vision in me with the feature of the recipe menu.
           </span>
         </p>
         <p
