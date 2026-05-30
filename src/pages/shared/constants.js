@@ -388,12 +388,6 @@ export const FEATURES = [
   },
 ];
 
-export const STATS = [
-  { value: "20+", label: "Verified Chefs" },
-  { value: "100+", label: "Happy Users" },
-  { value: "15+", label: "Event Managers" },
-  { value: "500+", label: "Recipes" },
-];
 
 export const RECIPE_DUMMY = RECIPES;
 

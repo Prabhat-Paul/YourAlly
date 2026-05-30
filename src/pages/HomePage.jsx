@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { C, FEATURES, STATS } from "./shared/constants";
+import { C, FEATURES } from "./shared/constants";
 import { Btn, SectionHeading, Icon } from "./shared/components";
 
 function FeatureCard({ feature, setSection }) {
@@ -227,44 +227,6 @@ export default function HomePage({ setSection }) {
         </div>
       </section>
 
-      {/* Stats Strip */}
-      <section style={{ background: C.brand, padding: "48px 24px" }}>
-        <div
-          style={{
-            maxWidth: 900,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-            gap: 24,
-            textAlign: "center",
-          }}
-        >
-          {STATS.map((s, i) => (
-            <div key={i}>
-              <div
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 44,
-                  fontWeight: 700,
-                  color: "#fff",
-                }}
-              >
-                {s.value}
-              </div>
-              <div
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 14,
-                  color: "rgba(255,255,255,0.82)",
-                  marginTop: 6,
-                }}
-              >
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
     </div>
   );
